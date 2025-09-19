@@ -1,3 +1,41 @@
+/* Pillars and Strengths Section Styles */
+.pillars-strengths-section {
+    background: #f5f6fa;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 2.5rem 2rem;
+    margin: 2rem auto 2.5rem auto;
+    max-width: 900px;
+    color: #333;
+}
+.pillars-strengths-section h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #6c63ff;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+}
+.pillars-strengths-section ol {
+    list-style:  none;
+    counter-reset: item;
+    padding-left: 1.5rem;
+}
+.pillars-strengths-section ol li {
+    position: relative;
+    font-size: 1.08rem;
+    margin-bottom: 1.1rem;
+    line-height: 1.7;
+    padding-left: 0.5rem;
+}
+.pillars-strengths-section ol li span[style*="font-weight:bold"] {
+    color: #222;
+    font-size: 1.09rem;
+    
+}
+
+.pillars-strengths-section ol li:last-child {
+    margin-bottom: 0;
+}
 * {
     margin: 0;
     padding: 0;
@@ -58,8 +96,7 @@ body::before {
     font-size: 1.8rem;
     font-weight: bold;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+     -webkit-text-fill-color: transparent;
     cursor: pointer;
     animation: pulse 2s infinite;
 }
