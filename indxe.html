@@ -22,6 +22,41 @@
                 <li><a href="#" class="nav-link" onclick="showPage('students')">Regular Students</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('special-students')">People of Determination</a></li>
                 <li><a href="#" class="nav-link" onclick="showPage('jobs')">Jobs</a></li>
+                <li class="auth-buttons" id="authButtons">
+                    <button class="btn btn-outline" onclick="event.stopPropagation(); showAuthModal('login')">Log In</button>
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); showAuthModal('register')">Register</button>
+                </li>
+                <li class="user-profile" id="userProfile">
+                    <div class="user-info" onclick="toggleUserMenu()">
+                        <div class="user-avatar" id="userAvatar"></div>
+                        <span id="userName"></span>
+                        <i class="dropdown-arrow">▼</i>
+                    </div>
+                    <div class="user-menu" id="userMenu">
+                        <div class="user-menu-header">
+                            <div class="menu-avatar" id="menuAvatar"></div>
+                            <div class="menu-user-info">
+                                <div class="menu-username" id="menuUserName"></div>
+                                <div class="menu-email" id="menuUserEmail"></div>
+                                <div class="user-type-badge" id="userTypeBadge"></div>
+                            </div>
+                        </div>
+                        <div class="menu-divider"></div>
+                        <a href="#" class="menu-item" id="profileLink" onclick="showProfilePage()">
+                            <i class="menu-icon">👤</i>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="#" class="menu-item" onclick="showSettings()">
+                            <i class="menu-icon">⚙️</i>
+                            <span>Settings</span>
+                        </a>
+                        <div class="menu-divider"></div>
+                        <a href="#" class="menu-item logout-btn" onclick="event.preventDefault(); logout();">
+                            <i class="menu-icon">🚪</i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -322,12 +357,61 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <div id="formContainer">
-<!-- Forms will be loaded here dynamically -->
                     <!-- Forms will be loaded here dynamically -->
                 </div>
             </div>
         </div>
-<script src="./js/mine.js"></script>
+
+        <!-- Auth Modal -->
+        <div id="authModal" class="modal">
+            <div class="modal-content auth-modal">
+                <span class="close" onclick="closeAuthModal()">&times;</span>
+                <div id="loginForm" class="auth-form">
+                    <h2>Login</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <p class="auth-switch">Don't have an account? <a href="#" onclick="showAuthForm('register')">Register</a></p>
+                    </form>
+                </div>
+                <div id="registerForm" class="auth-form" style="display: none;">
+                    <h2>Register</h2>
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label for="registerName">Full Name</label>
+                            <input type="text" id="registerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" id="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" minlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userType">I am a</label>
+                            <select id="userType" required>
+                                <option value="company">Company</option>
+                                <option value="student">Regular Student</option>
+                                <option value="special-student">Person of Determination</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <p class="auth-switch">Already have an account? <a href="#" onclick="showAuthForm('login')">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/mine.js"></script>
     </div>
 </body>
 </html>

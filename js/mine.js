@@ -1,5 +1,14 @@
 // Initialize data in localStorage if not exists
 function initializeData() {
+    // Initialize users array if not exists
+    if (!localStorage.getItem('users')) {
+        localStorage.setItem('users', JSON.stringify([]));
+    }
+    
+    // Initialize current user session if not exists
+    if (!localStorage.getItem('currentUser')) {
+        localStorage.setItem('currentUser', JSON.stringify(null));
+    }
     if (!localStorage.getItem('companies')) {
         localStorage.setItem('companies', JSON.stringify([
             {
@@ -291,18 +300,282 @@ function openMap() {
     window.open(`https://www.google.com/maps?q=${latitude},${longitude}`, '_blank');
 }
 
+// Show login/register or profile based on authentication status
+function updateAuthUI() {
+    const authButtons = document.getElementById('authButtons');
+    const userProfile = document.getElementById('userProfile');
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (currentUser) {
+        // User is logged in
+        authButtons.style.display = 'none';
+        userProfile.style.display = 'block';
+        
+        // Update user info in the profile
+        const userName = document.getElementById('userName');
+        const userAvatar = document.getElementById('userAvatar');
+        const menuAvatar = document.getElementById('menuAvatar');
+        const menuUserName = document.getElementById('menuUserName');
+        const menuUserEmail = document.getElementById('menuUserEmail');
+        const userTypeBadge = document.getElementById('userTypeBadge');
+        
+        // Set user initials for avatar
+        const initials = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
+        
+        // Update UI elements
+        userName.textContent = currentUser.name.split(' ')[0]; // Show only first name in the navbar
+        userAvatar.textContent = initials;
+        menuAvatar.textContent = initials;
+        menuUserName.textContent = currentUser.name;
+        menuUserEmail.textContent = currentUser.email;
+        
+        // Format and show user type
+        const userTypeMap = {
+            'company': 'Company',
+            'student': 'Regular Student',
+            'special-student': 'Person of Determination'
+        };
+        userTypeBadge.textContent = userTypeMap[currentUser.type] || currentUser.type;
+        
+        // Add user type specific styling
+        userTypeBadge.className = 'user-type-badge';
+        if (currentUser.type === 'company') {
+            userTypeBadge.style.background = 'rgba(74, 108, 247, 0.1)';
+            userTypeBadge.style.color = '#4a6cf7';
+        } else if (currentUser.type === 'special-student') {
+            userTypeBadge.style.background = 'rgba(72, 187, 120, 0.1)';
+            userTypeBadge.style.color = '#48bb78';
+        } else {
+            userTypeBadge.style.background = 'rgba(159, 122, 234, 0.1)';
+            userTypeBadge.style.color = '#9f7aea';
+        }
+        
+        // Update profile link
+        const profileLink = document.getElementById('profileLink');
+        profileLink.setAttribute('onclick', `event.preventDefault(); showProfilePage('${currentUser.type}')`);
+    } else {
+        // User is not logged in
+        authButtons.style.display = 'flex';
+        userProfile.style.display = 'none';
+    }
+}
+
+// Toggle user menu with animation
+function toggleUserMenu() {
+    const userMenu = document.getElementById('userMenu');
+    const dropdownArrow = document.querySelector('.dropdown-arrow');
+    
+    if (userMenu.classList.contains('active')) {
+        userMenu.style.opacity = '0';
+        userMenu.style.transform = 'translateY(-10px)';
+        dropdownArrow.style.transform = 'rotate(0deg)';
+        
+        // Wait for the animation to complete before hiding
+        setTimeout(() => {
+            userMenu.classList.remove('active');
+        }, 200);
+    } else {
+        userMenu.style.display = 'block';
+        // Force reflow to enable transition
+        void userMenu.offsetWidth;
+        userMenu.classList.add('active');
+        userMenu.style.opacity = '1';
+        userMenu.style.transform = 'translateY(0)';
+        dropdownArrow.style.transform = 'rotate(180deg)';
+    }
+}
+
+// Close user menu when clicking outside
+document.addEventListener('click', function(event) {
+    const userProfile = document.getElementById('userProfile');
+    const userMenu = document.getElementById('userMenu');
+    const isClickInside = userProfile.contains(event.target);
+    
+    if (!isClickInside && userMenu && userMenu.classList.contains('active')) {
+        toggleUserMenu();
+    }
+});
+
+// Handle user registration
+function handleRegister(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const userType = document.getElementById('userType').value;
+    
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Check if user already exists
+    if (users.some(user => user.email === email)) {
+        alert('User with this email already exists');
+        return;
+    }
+    
+    // Create new user
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        password, // In a real app, hash the password
+        type: userType,
+        createdAt: new Date().toISOString()
+    };
+    
+    // Save user
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    
+    // Log the user in
+    const { password: _, ...userWithoutPassword } = newUser; // Remove password from session
+    localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+    
+    // Close modal and update UI
+    closeAuthModal();
+    updateAuthUI();
+    
+    // Redirect to the appropriate page based on user type
+    showUserDashboard(userType);
+}
+
+// Handle user login
+function handleLogin(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+        // Log the user in
+        const { password: _, ...userWithoutPassword } = user; // Remove password from session
+        localStorage.setItem('currentUser', JSON.stringify(userWithoutPassword));
+        
+        // Close modal and update UI
+        closeAuthModal();
+        updateAuthUI();
+        
+        // Redirect to the appropriate page based on user type
+        showUserDashboard(user.type);
+    } else {
+        alert('Invalid email or password');
+    }
+}
+
+// Logout user
+function logout() {
+    console.log('Logging out...');
+    // Close the user menu if it's open
+    const userMenu = document.getElementById('userMenu');
+    if (userMenu && userMenu.classList.contains('active')) {
+        toggleUserMenu();
+    }
+    
+    // Clear user data
+    localStorage.removeItem('currentUser');
+    
+    // Update UI to show login/register buttons
+    updateAuthUI();
+    
+    // Redirect to home page
+    showPage('home');
+    
+    // Show a brief message to the user
+    setTimeout(() => {
+        alert('You have been successfully logged out.');
+    }, 100);
+    
+    // Prevent any default behavior
+    return false;
+}
+
+// Show user dashboard based on user type
+function showUserDashboard(userType) {
+    switch(userType) {
+        case 'company':
+            showPage('companies');
+            break;
+        case 'student':
+            showPage('students');
+            break;
+        case 'special-student':
+            showPage('special-students');
+            break;
+        default:
+            showPage('home');
+    }
+}
+
+// Show profile page based on user type
+function showProfilePage(userType) {
+    // In a real app, you would show the user's profile
+    // For now, just show a simple alert
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    alert(`Welcome to your profile, ${currentUser.name}!\nAccount Type: ${userType}`);
+}
+
+// Show auth modal with login or register form
+function showAuthModal(formType) {
+    const modal = document.getElementById('authModal');
+    modal.style.display = 'block';
+    showAuthForm(formType);
+}
+
+// Close auth modal
+function closeAuthModal() {
+    const modal = document.getElementById('authModal');
+    modal.style.display = 'none';
+}
+
+// Toggle between login and register forms
+function showAuthForm(formType) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    
+    if (formType === 'login') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    }
+}
+
+// Toggle user menu in mobile view
+function toggleUserMenu() {
+    const userMenu = document.getElementById('userMenu');
+    userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Close modals when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('authModal');
+    if (event.target === modal) {
+        closeAuthModal();
+    }
+    
+    const formModal = document.getElementById('formModal');
+};
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
     initializeData();
+    updateAuthUI();
     showPage('home');
     
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        const modal = document.getElementById('formModal');
-        if (event.target == modal) {
-            closeModal();
+    // Close user menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const userProfile = document.getElementById('userProfile');
+        const userMenu = document.getElementById('userMenu');
+        const isClickInside = userProfile && userProfile.contains(event.target);
+        
+        if (!isClickInside && userMenu && userMenu.classList.contains('active')) {
+            toggleUserMenu();
         }
-    };
+    });
     
     // Initialize contact form if it exists
     const contactForm = document.getElementById('contactForm');
