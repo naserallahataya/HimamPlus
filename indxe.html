@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Himam Plus - Empowering People of Determination</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo" onclick="showPage('home')">Himam Plus</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('companies')">Companies</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('students')">Regular Students</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('special-students')">People of Determination</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('jobs')">Jobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page-content active">
+            <div class="hero">
+                <h1>Welcome to Himam Plus</h1>
+                <p>An integrated platform to empower People of Determination and create real change in society through employment, training, and innovation</p>
+                
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        Motivational video about our vision and mission
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">People of Determination employed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Partner companies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Training opportunities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Satisfaction rate</div>
+                </div>
+            </div>
+
+            <!-- Success Stories -->
+            <h2 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-dark);">Success Stories</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div>
+                            <div class="card-title">Ahmed Mohamed</div>
+                            <div class="card-subtitle">Web Developer</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Ahmed succeeded in securing a Web Developer position at a leading tech company after completing the training program.
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-badge">People of Determination</span>
+                        <span style="color: var(--secondary-color);">⭐ Inspirational Story</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div>
+                            <div class="card-title">Fatima Ali</div>
+                            <div class="card-subtitle">Graphic Designer</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Fatima launched her own design project after receiving support and guidance from the platform.
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-badge">People of Determination</span>
+                        <span style="color: var(--secondary-color);">⭐ Entrepreneur</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div>
+                            <div class="card-title">Khaled Salem</div>
+                            <div class="card-subtitle">Accountant</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Khaled was promoted to the head of the accounting department after two years of excellent work.
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-badge">People of Determination</span>
+                        <span style="color: var(--secondary-color);">⭐ Leader</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partner Companies -->
+            <h2 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-dark);">Partner Companies</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏢</div>
+                        <div>
+                            <div class="card-title">Advanced Tech Company</div>
+                            <div class="card-subtitle">Information Technology</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Strategic partner providing employment and training opportunities in programming and software development.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏢</div>
+                        <div>
+                            <div class="card-title">Creative Group</div>
+                            <div class="card-subtitle">Marketing & Advertising</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Offers opportunities in design and digital marketing with specialized training programs.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏢</div>
+                        <div>
+                            <div class="card-title">National Bank</div>
+                            <div class="card-subtitle">Banking Services</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        Provides job opportunities in banking with a strong commitment to diversity and inclusion.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Jobs -->
+            <h2 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-dark);">Latest Available Jobs</h2>
+            <div class="cards-grid" id="homeJobsGrid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💼</div>
+                        <div>
+                            <div class="card-title">Frontend Developer</div>
+                            <div class="card-subtitle">Advanced Tech Company</div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        We are looking for an enthusiastic frontend developer to work on innovative projects.
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-badge">Full-time</span>
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2 class="cta-title">How Can You Contribute?</h2>
+                <div class="cta-buttons">
+                    <div class="cta-card" onclick="showCTAModal('volunteer')">
+                        <div class="cta-icon">🤝</div>
+                        <h3>Volunteer</h3>
+                        <p>Contribute your time and skills to support People of Determination</p>
+                    </div>
+                    <div class="cta-card" onclick="showCTAModal('company')">
+                        <div class="cta-icon">🏢</div>
+                        <h3>Company</h3>
+                        <p>Provide employment and training opportunities for People of Determination</p>
+                    </div>
+                    <div class="cta-card" onclick="showCTAModal('student')">
+                        <div class="cta-icon">🎓</div>
+                        <h3>Student</h3>
+                        <p>Join us and develop your skills</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Us Section -->
+            <section id="contact" class="contact-section">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We are here to assist and answer your inquiries</p>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>Riyadh, Saudi Arabia</p>
+                                <p>P.O. Box 12345</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+966 11 234 5678</p>
+                                <p>+966 50 123 4567</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">✉️</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@himamplus.com</p>
+                                <p>support@himamplus.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">⏰</div>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Sunday - Thursday: 8 AM - 4 PM</p>
+                                <p>Friday and Saturday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <span>Map Showing Our Location</span>
+                        <div class="map-overlay">
+                            <button class="btn btn-secondary" onclick="openMap()">Open Map</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Companies Page -->
+        <section id="companies" class="page-content">
+            <div class="section-header">
+                <h2>Participating Companies</h2>
+                <button class="add-btn" onclick="showAddForm('company')">Add New Company</button>
+            </div>
+            <div class="cards-grid" id="companiesList">
+                <!-- Companies will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Regular Students Page -->
+        <section id="students" class="page-content">
+            <div class="section-header">
+                <h2>Regular Students</h2>
+                <button class="add-btn" onclick="showAddForm('student')">Add New Student</button>
+            </div>
+            <div class="cards-grid" id="studentsList">
+                <!-- Students will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- People of Determination Students Page -->
+        <section id="special-students" class="page-content">
+            <div class="section-header">
+                <h2>People of Determination</h2>
+                <button class="add-btn" onclick="showAddForm('special-student')">Add New Student</button>
+            </div>
+            <div class="cards-grid" id="specialStudentsList">
+                <!-- Special needs students will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Jobs Page -->
+        <section id="jobs" class="page-content">
+            <div class="section-header">
+                <h2>Available Jobs</h2>
+                <button class="add-btn" onclick="showAddForm('job')">Add New Job</button>
+            </div>
+            <div class="cards-grid" id="jobsList">
+                <!-- Jobs will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Modal for Add/Edit Forms -->
+        <div id="formModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="formContainer">
+                    <!-- Forms will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+<script src="./js/mine.js"></script>
+    </div>
+</body>
+</html>
