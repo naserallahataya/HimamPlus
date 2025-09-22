@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Cards</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo" onclick="showPage('home')">Himam Plus</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="indxe.html" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="company.html"  class="nav-link" onclick="showPage('companies')">Companies</a></li>
+                <li><a href="regular.html" class="nav-link" onclick="showPage('students')">Regular Students</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('special-students')">Students of Determination</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('jobs')">Jobs</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img class="Emad-imgs" src="./assets/photos/mtnLog.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Mobile Telephone Networrk</div>
+                <div class="card-subtitle">Telecom Company </div>
+                
+                <div class="card-about">
+                    <p>We are MTN Syria, a leading telecommunications provider connecting millions across the countr
+                    Our mission is to deliver reliable voice, data, and digital services that keep people closer
+                    With nationwide coverage, we continue to drive growth and innovation in Syria's telecom sector</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/Syriatel.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Syriatel</div>
+                <div class="card-subtitle">Telecom Company </div>
+                
+                <div class="card-about">
+                    <p>We are Syriatel, the first and largest mobile operator in Syria, proudly serving millions of subscribers.
+                    Our mission is to provide innovative telecom solutions that empower communication and connectivity.
+                    With strong nationwide coverage, we continue to lead the way in Syria’s telecommunications sector.</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/Syrian Tec.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Syrian Telecom</div>
+                <div class="card-subtitle">Telecom Company </div>
+                
+                <div class="card-about">
+                    <p>We are Syrian Telecom, the national provider of fixed-line and internet services across Syria.
+                    Our goal is to ensure reliable connectivity and modern digital solutions for individuals and businesses.
+                    With a commitment to innovation, we continue to build and expand the country's telecommunications infrastructure.</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/Ahmad.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Information Suecurity Beacen</div>
+                <div class="card-subtitle">Cyber Security </div>
+                
+                <div class="card-about">
+                    <p>I'm Ahmad Hindawy, founder of Information Security Beacen Company, a trusted leader in cybersecurity.
+                    We provide advanced protection through penetration testing, threat intelligence, and security awareness.
+                    Our mission is to safeguard businesses and build digital trust in an increasingly connected world.</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/Damascuse.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Damascuse University</div>
+                <div class="card-subtitle">University </div>
+                
+                <div class="card-about">
+                    <p>Welcome to Damascus University, the beacon of higher education in Syria and the oldest university in the Arab world.
+                        Here, tradition meets innovation we shape minds to lead in science, literature</p>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/RedCross.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Syrian Red Crescent</div>
+                <div class="card-subtitle">humanitarian aid </div>
+                
+                <div class="card-about">
+                    <p>At the Syrian Arab Red Crescent, our mission is rooted in humanity—we serve all, especially the most vulnerable, without discrimination.
+                        Every day, our teams deliver life-saving aid, medical care, and hope across Syria’s cities and conflict zones</p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/SOFWD.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Syrian Organaisation for persons with Disabilities </div>
+                <div class="card-subtitle">Non-profit civil organization </div>
+                
+                <div class="card-about">
+                    <p>At the Syrian Organization for Persons with Disabilities, we champion inclusion, dignity, and equal opportunity for every individual.
+                        Our programs empower people through education, rehabilitation, and community engagement across Syria.</p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/HI.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Humanity & Inclusion </div>
+                <div class="card-subtitle">ndependent and impartial aid </div>
+                
+                <div class="card-about">
+                    <p>At Humanity & Inclusion, we stand beside those whose voices are often unheard—especially people with disabilities and survivors of conflict.
+                        Our teams deliver rehabilitation, inclusive education, and emergency aid in Syria and beyond.</p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/Pride.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">Pride Industries </div>
+                <div class="card-subtitle">Non-profit organization </div>
+                
+                <div class="card-about">
+                    <p>At PRIDE Industries, we believe disability is not a limitation it's a strength that enriches every workplace.
+                        We create inclusive job opportunities and empower people with disabilities to thrive through training, support, and purpose</p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/permobil.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">permobil </div>
+                <div class="card-subtitle">assistive in technology  </div>
+                
+                <div class="card-about">
+                    <p>At Permobil, we design mobility solutions that empower people with disabilities to live life on their own terms.
+                        Our wheelchairs and assistive technologies are built with innovation, dignity, and independence in mind.
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/RTiLite.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">TiLite </div>
+                <div class="card-subtitle">Manufacturing Company  </div>
+                
+                <div class="card-about">
+                    <p>At TiLite, we craft custom wheelchairs that reflect the individuality, lifestyle, and performance needs of every user.
+                    Our designs combine cutting-edge materials with user-driven innovation to redefine mobility.
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-logo">
+                    <div class="logo-container">
+                        <div class="logo"><img src="./assets/photos/logo.jpg" style="width: 80px; height: 80px; border-radius: 20px;"></div>
+                    </div>
+                </div>
+                
+                <div class="card-title">VeloTixi Zürich </div>
+                <div class="card-subtitle">transport service and Non-profit   </div>
+                
+                <div class="card-about">
+                    <p>At VeloTixi Zürich, we offer eco-friendly, accessible transport that brings people closer to the heart of the city.
+                        Our pedal-powered taxis serve everyone—including seniors and people with disabilities—with care and comfort.
+                    </p>
+                </div>
+                <div class="card-content">
+                    <div class="card-buttons">
+                        <button class="btn btn-details">Details</button>
+                        <button class="btn btn-contact">Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="mine.js"></script>
+</body>
+</html>
